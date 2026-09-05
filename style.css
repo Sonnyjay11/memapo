@@ -1,0 +1,1031 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sky: #a9dff1;
+  --sky-light: #eaf8fc;
+  --blue: #6fb7d2;
+  --deep-blue: #477f99;
+  --paper: #fffdf7;
+  --cream: #fff8e9;
+  --brown: #70594c;
+  --soft-brown: #92776a;
+  --white: rgba(255,255,255,0.8);
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  color: var(--brown);
+  overflow-x: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      #bde9f6 0%,
+      #e9f8fb 45%,
+      #fdf8ed 100%
+    );
+}
+
+
+/* =================================
+   BACKGROUND
+================================= */
+
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* soft sun */
+
+.sun {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  right: -110px;
+  top: -100px;
+
+  background: rgba(255, 245, 205, 0.55);
+
+  filter: blur(3px);
+}
+
+
+/* Filipino capiz-window inspired shape */
+
+.capiz-window {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+
+  left: -190px;
+  bottom: -170px;
+
+  border-radius: 50%;
+
+  border: 3px solid rgba(255,255,255,0.45);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.2),
+      rgba(255,255,255,0.03)
+    );
+
+  box-shadow:
+    0 0 60px rgba(255,255,255,0.3);
+}
+
+.window-line {
+  position: absolute;
+  background: rgba(255,255,255,0.3);
+}
+
+.window-line.vertical {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+}
+
+.window-line.horizontal {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+}
+
+
+/* subtle Filipino woven / banig-inspired texture */
+
+.woven-pattern {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.12;
+
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 10px,
+      rgba(72, 125, 145, 0.25) 11px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 10px,
+      rgba(72, 125, 145, 0.18) 11px,
+      transparent 12px
+    );
+}
+
+
+/* Sampaguita-inspired flowers */
+
+.sampaguita {
+  position: absolute;
+
+  font-family: serif;
+
+  color: rgba(255,255,255,0.7);
+
+  font-size: 40px;
+
+  filter: blur(0.2px);
+
+  animation: floating 7s ease-in-out infinite;
+}
+
+.flower-one {
+  top: 15%;
+  left: 8%;
+}
+
+.flower-two {
+  top: 68%;
+  right: 8%;
+  font-size: 28px;
+  animation-delay: 1.5s;
+}
+
+.flower-three {
+  top: 38%;
+  right: 4%;
+  font-size: 20px;
+  animation-delay: 3s;
+}
+
+
+/* leaves */
+
+.leaf {
+  position: absolute;
+
+  font-size: 70px;
+
+  color: rgba(90, 150, 125, 0.15);
+
+  transform: rotate(-20deg);
+}
+
+.leaf-one {
+  left: -15px;
+  top: 35%;
+}
+
+.leaf-two {
+  right: -10px;
+  bottom: 20%;
+  transform: rotate(160deg);
+}
+
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+
+/* =================================
+   MUSIC
+================================= */
+
+.music-button {
+  position: fixed;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 20;
+
+  border: 1px solid rgba(255,255,255,0.7);
+
+  background: rgba(255,255,255,0.65);
+
+  backdrop-filter: blur(12px);
+
+  padding: 10px 15px;
+
+  border-radius: 30px;
+
+  color: var(--deep-blue);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(76, 125, 145, 0.12);
+
+  transition: 0.25s ease;
+}
+
+.music-button:hover {
+  transform: translateY(-2px);
+  background: white;
+}
+
+
+/* =================================
+   PAGE SYSTEM
+================================= */
+
+.page {
+  display: none;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 70px 20px 40px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.page.active {
+  display: flex;
+}
+
+
+/* =================================
+   PAGE 1
+================================= */
+
+.intro-card {
+  width: min(620px, 100%);
+
+  text-align: center;
+
+  padding: 38px 30px 30px;
+
+  border-radius: 28px;
+
+  background:
+    rgba(255,255,255,0.5);
+
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,0.7);
+
+  box-shadow:
+    0 30px 80px rgba(69, 124, 148, 0.16);
+}
+
+
+.small-label {
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: var(--blue);
+
+  font-weight: 700;
+
+  margin-bottom: 15px;
+}
+
+
+.tiny-flower {
+  font-size: 20px;
+
+  color: var(--blue);
+
+  margin-bottom: 5px;
+}
+
+
+h1 {
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(55px, 12vw, 82px);
+
+  line-height: 0.9;
+
+  font-weight: 600;
+
+  color: var(--deep-blue);
+}
+
+h1 span {
+  color: #568fa8;
+}
+
+
+.intro-text {
+  margin-top: 22px;
+
+  line-height: 1.7;
+
+  color: var(--soft-brown);
+
+  font-size: 15px;
+}
+
+
+/* =================================
+   PAPER LETTER
+================================= */
+
+.paper-wrapper {
+  width: 100%;
+
+  margin-top: 28px;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+}
+
+
+.paper-letter {
+  position: relative;
+
+  max-height: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition:
+    max-height 0.8s ease,
+    opacity 0.5s ease,
+    transform 0.6s ease;
+
+  text-align: left;
+
+  padding: 0 30px;
+
+  background:
+
+    repeating-linear-gradient(
+      0deg,
+      rgba(120,90,60,0.025) 0px,
+      rgba(120,90,60,0.025) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+
+    linear-gradient(
+      135deg,
+      #fffef9,
+      #fffaf0
+    );
+
+  box-shadow:
+    0 15px 35px rgba(90,70,50,0.12);
+
+  border: 1px solid rgba(160,130,100,0.12);
+
+  border-radius: 8px;
+}
+
+
+.paper-letter.open {
+  max-height: 1000px;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  padding: 42px 30px 35px;
+}
+
+
+.paper-letter p {
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+
+  line-height: 1.45;
+
+  margin-bottom: 18px;
+
+  color: #66564c;
+}
+
+
+.paper-letter strong {
+  font-weight: 700;
+
+  color: #4e7f94;
+}
+
+
+.letter-greeting {
+  font-size: 28px !important;
+
+  font-weight: 600;
+
+  color: var(--deep-blue) !important;
+}
+
+
+.letter-signature {
+  text-align: right;
+
+  font-size: 29px !important;
+
+  margin-top: 25px;
+}
+
+
+/* paper tape */
+
+.paper-tape {
+  position: absolute;
+
+  width: 90px;
+  height: 25px;
+
+  background: rgba(167, 215, 226, 0.55);
+
+  top: 10px;
+
+  transform: rotate(-5deg);
+}
+
+.tape-left {
+  left: 25px;
+}
+
+.tape-right {
+  right: 25px;
+
+  transform: rotate(5deg);
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.main-button {
+  margin-top: 25px;
+
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #77bad3,
+      #5fa5c1
+    );
+
+  color: white;
+
+  padding: 14px 25px;
+
+  border-radius: 40px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(77, 139, 164, 0.25);
+
+  transition: 0.25s ease;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 30px rgba(77, 139, 164, 0.3);
+}
+
+
+.hint {
+  margin-top: 13px;
+
+  font-size: 11px;
+
+  color: rgba(112,89,76,0.55);
+}
+
+
+/* =================================
+   PAGE 2
+================================= */
+
+.date-card {
+  width: min(580px, 100%);
+
+  text-align: center;
+
+  padding: 40px 28px 30px;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,0.68);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.75);
+
+  box-shadow:
+    0 30px 90px rgba(69,124,148,0.18);
+}
+
+
+.date-top-flower {
+  color: var(--blue);
+
+  font-size: 24px;
+
+  margin-bottom: 5px;
+}
+
+
+.date-card h2 {
+  font-family: "Caveat", cursive;
+
+  color: var(--deep-blue);
+
+  font-size: 58px;
+
+  margin-top: 5px;
+}
+
+
+.big-question {
+  font-family: "Caveat", cursive;
+
+  font-size: 38px;
+
+  line-height: 1.05;
+
+  margin-top: 10px;
+
+  color: var(--brown);
+}
+
+
+.big-question span {
+  color: var(--deep-blue);
+
+  font-weight: 700;
+}
+
+
+.question-subtext {
+  margin-top: 20px;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+
+  color: var(--soft-brown);
+}
+
+
+/* =================================
+   PHOTO
+================================= */
+
+.photo-frame {
+  position: relative;
+
+  width: min(310px, 90%);
+
+  margin: 30px auto 25px;
+
+  padding: 10px 10px 22px;
+
+  background: #fffdf8;
+
+  box-shadow:
+    0 15px 35px rgba(80,65,55,0.16);
+
+  transform: rotate(-1.5deg);
+}
+
+
+.photo-frame img {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+}
+
+
+.photo-frame p {
+  font-family: "Caveat", cursive;
+
+  font-size: 19px;
+
+  margin-top: 5px;
+
+  color: var(--soft-brown);
+}
+
+
+.photo-tape {
+  position: absolute;
+
+  width: 85px;
+  height: 23px;
+
+  background: rgba(169,219,231,0.65);
+
+  top: -10px;
+
+  left: 50%;
+
+  transform: translateX(-50%) rotate(2deg);
+
+  z-index: 2;
+}
+
+
+/* =================================
+   BOOKING
+================================= */
+
+.booking-area {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin: 25px auto;
+
+  width: min(350px, 100%);
+
+  text-align: left;
+}
+
+
+.booking-area label {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: var(--deep-blue);
+
+  margin-top: 5px;
+}
+
+
+.booking-area input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(90,140,155,0.2);
+
+  background: rgba(255,255,255,0.85);
+
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--brown);
+
+  outline: none;
+}
+
+
+.booking-area input:focus {
+  border-color: var(--blue);
+
+  box-shadow:
+    0 0 0 3px rgba(111,183,210,0.12);
+}
+
+
+.date-hint {
+  text-align: center;
+
+  font-size: 11px;
+
+  color: rgba(112,89,76,0.6);
+
+  margin-top: 5px;
+}
+
+
+/* =================================
+   CHOICE BUTTONS
+================================= */
+
+.choice-buttons {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+
+  width: min(350px, 100%);
+
+  margin: 0 auto;
+}
+
+
+.yes-button,
+.maybe-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border-radius: 30px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.yes-button {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #77bdd7,
+      #589eb9
+    );
+
+  color: white;
+
+  box-shadow:
+    0 10px 25px rgba(76,145,171,0.22);
+}
+
+
+.yes-button:hover {
+  transform: translateY(-2px);
+}
+
+
+.maybe-button {
+  border: 1px solid rgba(90,140,155,0.2);
+
+  background: rgba(255,255,255,0.65);
+
+  color: var(--deep-blue);
+}
+
+
+.footer-note {
+  font-family: "Caveat", cursive;
+
+  margin-top: 25px;
+
+  font-size: 17px;
+
+  color: rgba(112,89,76,0.65);
+}
+
+
+/* =================================
+   SUCCESS
+================================= */
+
+.success-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 25px;
+
+  background:
+    rgba(70,130,150,0.35);
+
+  backdrop-filter: blur(10px);
+}
+
+
+.success-overlay.show {
+  display: flex;
+}
+
+
+.success-card {
+  width: min(430px, 100%);
+
+  text-align: center;
+
+  padding: 42px 30px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffef9,
+      #fff8e9
+    );
+
+  box-shadow:
+    0 30px 90px rgba(50,90,105,0.25);
+
+  animation:
+    pop 0.45s ease;
+}
+
+
+@keyframes pop {
+
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+
+.success-flower {
+  font-size: 35px;
+
+  color: var(--blue);
+
+  margin-bottom: 10px;
+}
+
+
+.success-card h2 {
+  font-family: "Caveat", cursive;
+
+  color: var(--deep-blue);
+
+  font-size: 55px;
+}
+
+
+.success-card p {
+  margin-top: 8px;
+
+  color: var(--soft-brown);
+
+  line-height: 1.6;
+}
+
+
+.chosen-date {
+  margin: 20px 0;
+
+  padding: 13px;
+
+  border-radius: 14px;
+
+  background: rgba(169,219,231,0.25);
+
+  color: var(--deep-blue);
+
+  font-weight: 700;
+}
+
+
+.success-small {
+  font-size: 13px;
+}
+
+
+.hearts {
+  margin-top: 20px;
+
+  color: #75b7cf;
+
+  letter-spacing: 10px;
+
+  font-size: 20px;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding:
+      70px
+      14px
+      30px;
+  }
+
+  .intro-card,
+  .date-card {
+    padding:
+      30px
+      18px
+      25px;
+
+    border-radius: 23px;
+  }
+
+  h1 {
+    font-size: 62px;
+  }
+
+  .intro-text {
+    font-size: 14px;
+  }
+
+  .paper-letter.open {
+    padding:
+      40px
+      21px
+      25px;
+  }
+
+  .paper-letter p {
+    font-size: 20px;
+  }
+
+  .letter-greeting {
+    font-size: 26px !important;
+  }
+
+  .date-card h2 {
+    font-size: 52px;
+  }
+
+  .big-question {
+    font-size: 33px;
+  }
+
+  .music-button span {
+    display: none;
+  }
+
+  .music-button {
+    padding: 10px 12px;
+  }
+
+}
+
+
+/* very small phones */
+
+@media (max-width: 380px) {
+
+  .page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  h1 {
+    font-size: 55px;
+  }
+
+  .paper-letter p {
+    font-size: 18px;
+  }
+
+  .big-question {
+    font-size: 30px;
+  }
+
+}
